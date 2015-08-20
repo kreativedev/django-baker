@@ -154,7 +154,7 @@ class {{ model_name }}CreateView(StaffRequiredMixin, CreateView):
         return super({{ model_name }}CreateView, self).get_template_names()
 
     def get_success_url(self):
-        return reverse("{{ model_name_slug }}_detail", args=(self.object.{% if slug_field %}{{ slug_field_name }}{% else %}pk{% endif %},))
+        return reverse("{{ app_label }}:{{ model_name_slug }}_detail", args=(self.object.{% if slug_field %}{{ slug_field_name }}{% else %}pk{% endif %},))
 
 
 class {{ model_name }}UpdateView(StaffRequiredMixin, UpdateView):
@@ -222,7 +222,7 @@ class {{ model_name }}UpdateView(StaffRequiredMixin, UpdateView):
         return super({{ model_name }}UpdateView, self).get_template_names()
 
     def get_success_url(self):
-        return reverse("{{ model_name_slug }}_detail", args=(self.object.{% if slug_field %}{{ slug_field_name }}{% else %}pk{% endif %},))
+        return reverse("{{{ app_label }}:{{ model_name_slug }}_detail", args=(self.object.{% if slug_field %}{{ slug_field_name }}{% else %}pk{% endif %},))
 
 
 class {{ model_name }}DeleteView(StaffRequiredMixin, DeleteView):
@@ -271,7 +271,7 @@ class {{ model_name }}DeleteView(StaffRequiredMixin, DeleteView):
         return super({{ model_name }}DeleteView, self).get_template_names()
 
     def get_success_url(self):
-        return reverse("{{ model_name_slug }}_list")
+        return reverse("{{ app_label }}:{{ model_name_slug }}_list")
 
 class {{ model_name }}ViewSet(viewsets.ModelViewSet):
     queryset = {{ model_name }}.objects.all()
