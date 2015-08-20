@@ -21,7 +21,7 @@ class Baker(object):
             self.create_directories(app_label)
             self.create_init_files(app_label, model_names.keys(), models)
             self.remove_empty_startapp_files(app_label)
-            for file_name in ["forms", "admin"]:
+            for file_name in ["forms", "admin", "serializers"]:
                 file_path = "%s/%s.py" % (app_label, file_name)
                 template_path = "django_baker/%s" % (file_name)
                 self.create_file_from_template(file_path, template_path, {"model_names": model_names})
