@@ -108,7 +108,6 @@ class {{ model_name }}DetailView(StaffRequiredMixin, DetailView):
 class {{ model_name }}CreateView(StaffRequiredMixin, CreateView):
     model = {{ model_name }}
     form_class = {{ model_name }}Form
-    fields = {{ model_fields|safe }}
     template_name = "{{ app_label }}/{{ model_name_slug }}_create.html"
     success_url = reverse_lazy("{{ model_name_slug }}_list")
 
@@ -161,7 +160,6 @@ class {{ model_name }}CreateView(StaffRequiredMixin, CreateView):
 class {{ model_name }}UpdateView(StaffRequiredMixin, UpdateView):
     model = {{ model_name }}
     form_class = {{ model_name }}Form
-    fields = {{ model_fields|safe }}
     template_name = "{{ app_label }}/{{ model_name_slug }}_update.html"
     initial = {}
     slug_field = '{{ slug_field_name }}'
